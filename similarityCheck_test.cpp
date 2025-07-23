@@ -7,7 +7,7 @@ class LengthTestFixture : public testing::Test {
 public:
 	const int PERFECT_SCORE = 60;
 	const int ZERO_SCORE = 0;
-	double getTestResult(std::string str1, std::string str2)
+	int getTestResult(std::string str1, std::string str2)
 	{
 		LengthCheck lengthChecker;
 		return lengthChecker.getLengthScore(str1, str2);
@@ -37,11 +37,13 @@ TEST_F(LengthTestFixture, 2xLengthDiffCharReverse)
 TEST_F(LengthTestFixture, LenDiff5to3)
 {
 	EXPECT_LT(getTestResult("AAABB", "BAA"), PERFECT_SCORE);
+	EXPECT_EQ(getTestResult("AAABB", "BAA"), 20.0);
 }
 
 TEST_F(LengthTestFixture, LenDiff2to3)
 {
 	EXPECT_LT(getTestResult("AA", "AAE"), PERFECT_SCORE);
+	EXPECT_EQ(getTestResult("AA", "AAE"), 30);
 }
 
 int main() {

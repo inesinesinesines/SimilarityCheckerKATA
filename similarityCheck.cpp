@@ -14,21 +14,23 @@ public :
 		return calculateScore(len1, len2);
 	}
 
+private: 
+	const double LENGTH_MAX_SCORE = 60.0;
+	const double LENGTH_MIN_SCORE = 0.0;
+
 	void sortLength(double& len1, double& len2)
 	{
 		if (len1 < len2) std::swap(len1, len2);
 	}
 
-	double calculateScore(double LongLen, double shortLen)
+	int calculateScore(int max, int min)
 	{
-		double rate = (LongLen - shortLen) / shortLen;
+		int gap = max - min;
+		int rate = (max - min) / min;
 
-		if (rate >= 1) return 0; // long len >= shortlen * 2
+		if (rate >= 1) return LENGTH_MIN_SCORE; 
 
-		return (1 - rate) * LENGTH_SCORE;	
+		return (LENGTH_MAX_SCORE - (LENGTH_MAX_SCORE * gap) / min);
 	}
-private: 
-	const double LENGTH_SCORE = 60.0;
-
 };
 
