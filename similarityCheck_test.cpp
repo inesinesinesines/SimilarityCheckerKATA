@@ -3,45 +3,36 @@
 #include <string>
 using namespace testing;
 
-TEST(CheckSimularity, SameLength)
-{
-	std::string str1 = "ABCD";
-	std::string str2 = "ABCD";
-	SimLength simlength;
-	double result = simlength.getResult(str1, str2);
+class LengthTestFixture : public testing::Test {
+public:
+	const int PERFECT_SCORE = 60;
+	const int ZERO_SCORE = 0;
+	double getTestResult(std::string str1, std::string str2)
+	{
+		LengthCheck lengthChecker;
+		return lengthChecker.getLengthScore(str1, str2);
+	}
+};
 
-	EXPECT_EQ(60, result);
+TEST_F(LengthTestFixture, SameLength)
+{
+	EXPECT_EQ(PERFECT_SCORE, getTestResult("ABCD", "ABCD"));
 }
 
-TEST(CheckSimularity, SameLengthDiffChar)
+TEST_F(LengthTestFixture, SameLengthDiffChar)
 {
-	std::string str1 = "DSA";
-	std::string str2 = "ASD";
-	SimLength simlength;
-	double result = simlength.getResult(str1, str2);
-
-	EXPECT_EQ(60, result);
+	EXPECT_EQ(PERFECT_SCORE, getTestResult("DSA", "ASD"));
 }
 
-TEST(CheckSimularity, 2xLengthDiffChar)
+TEST_F(LengthTestFixture, 2xLengthDiffChar)
 {
-	std::string str1 = "A";
-	std::string str2 = "BB";
-	SimLength simlength;
-	double result = simlength.getResult(str1, str2);
-
-	EXPECT_EQ(0, result);
+	EXPECT_EQ(ZERO_SCORE, getTestResult("A", "BB"));
 }
 
 
-TEST(CheckSimularity, LenDiff5to3)
+TEST_F(LengthTestFixture, LenDiff5to3)
 {
-	std::string str1 = "AAABB";
-	std::string str2 = "BAA";
-	SimLength simlength;
-	double result = simlength.getResult(str1, str2);
-
-	EXPECT_LT(result, 60);
+	EXPECT_LT(getTestResult("AAABB", "BAA"), PERFECT_SCORE);
 }
 
 int main() {
