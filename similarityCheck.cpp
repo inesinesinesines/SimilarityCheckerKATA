@@ -6,8 +6,8 @@ class LengthCheck {
 public :
 	double getLengthScore(string str1, string str2)
 	{
-		double len1 = str1.length();
-		double len2 = str2.length();
+		double len1 = static_cast<double>(str1.length());
+		double len2 = static_cast<double>(str2.length());
 
 		sortLength(len1, len2);
 

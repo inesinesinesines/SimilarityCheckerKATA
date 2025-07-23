@@ -39,6 +39,11 @@ TEST_F(LengthTestFixture, LenDiff5to3)
 	EXPECT_LT(getTestResult("AAABB", "BAA"), PERFECT_SCORE);
 }
 
+TEST_F(LengthTestFixture, LenDiff2to3)
+{
+	EXPECT_LT(getTestResult("AA", "AAE"), PERFECT_SCORE);
+}
+
 int main() {
 	::testing::InitGoogleMock();
 	return RUN_ALL_TESTS();
