@@ -11,7 +11,6 @@ public :
 
 		sortLength(len1, len2);
 
-		if (len1 >= len2 * 2) return 0;
 		return calculateScore(len1, len2);
 	}
 
@@ -22,6 +21,10 @@ public :
 
 	double calculateScore(double LongLen, double shortLen)
 	{
+		if (LongLen >= shortLen * 2) {
+			return 0;
+		}
+
 		double rate = (LongLen - shortLen) / shortLen;
 		double result = (1 - rate) * LENGTH_SCORE;
 		return result;
