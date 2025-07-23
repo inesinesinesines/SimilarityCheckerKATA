@@ -21,13 +21,11 @@ public :
 
 	double calculateScore(double LongLen, double shortLen)
 	{
-		if (LongLen >= shortLen * 2) {
-			return 0;
-		}
-
 		double rate = (LongLen - shortLen) / shortLen;
-		double result = (1 - rate) * LENGTH_SCORE;
-		return result;
+
+		if (rate >= 1) return 0; // long len >= shortlen * 2
+
+		return (1 - rate) * LENGTH_SCORE;	
 	}
 private: 
 	const double LENGTH_SCORE = 60.0;
