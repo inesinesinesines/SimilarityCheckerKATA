@@ -29,6 +29,10 @@ TEST_F(LengthTestFixture, 2xLengthDiffChar)
 	EXPECT_EQ(ZERO_SCORE, getTestResult("A", "BB"));
 }
 
+TEST_F(LengthTestFixture, 2xLengthDiffCharReverse)
+{
+	EXPECT_EQ(ZERO_SCORE, getTestResult("DDDDDD", "A"));
+}
 
 TEST_F(LengthTestFixture, LenDiff5to3)
 {

@@ -11,6 +11,7 @@ public :
 
 		sortLength(len1, len2);
 
+		if (len1 >= len2 * 2) return 0;
 		return calculateScore(len1, len2);
 	}
 
